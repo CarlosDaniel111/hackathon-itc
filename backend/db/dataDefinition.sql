@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS Event(
     salon_id INT NOT NULL,
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
+    event_type ENUM('wedding', 'birthday', 'corporate', 'other') NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
