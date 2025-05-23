@@ -64,10 +64,12 @@ const getEventById = async (req, res) => {
       'SELECT * FROM Event WHERE id = ? AND user_id = ?',
       [eventId, user_id]
     );
-    if (events.length === 0) {
+    if (!events) {
       return res.status(404).json({ error: 'Evento no encontrado' });
     }
     const event = events[0];
+
+    console.log("xd");
 
     const [customizations] = await pool.query(
       'SELECT id, type, description, price FROM EventCustomization WHERE event_id = ?',
