@@ -1,9 +1,7 @@
 
 import { PackageCard } from './PackageCard'
-import { useState } from 'react';
 
-export const PackageList = () => {
-  const [packageSelected, setPackageSelected] = useState(null);
+export const PackageList = ({ packageSelected, setPackageSelected }) => {
   return (
     <div className="flex flex-wrap justify-center">
       {

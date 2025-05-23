@@ -1,7 +1,6 @@
 import { SalonCard } from "./SalonCard"
-import { useState } from "react"
-export const SalonList = () => {
-  const [salonSelected, setSalonSelected] = useState(null)
+
+export const SalonList = ({ salonSelected, setSalonSelected }) => {
 
   return (
     <div className="flex flex-wrap justify-center">
