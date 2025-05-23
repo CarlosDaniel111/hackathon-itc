@@ -1,6 +1,7 @@
 import { NavBar } from "../components/NavBar"
 import { MyFooter } from "../components/MyFooter"
-import { ListSalon } from "../components/Schedule/ListSalon";
+import { SalonList } from "../components/Schedule/SalonList";
+import { PackageList } from "../components/Schedule/PackageList";
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -45,7 +46,13 @@ export const SchedulePage = () => {
       {/* Seleccionar salon por cuadros de card*/}
       <div className="w-full mx-auto mt-8 mx-2 p-6 bg-white rounded shadow">
         <h2 className="text-2xl font-bold mb-4 text-center">Selecciona un salón</h2>
-        <ListSalon />
+        <SalonList />
+      </div>
+
+      {/* Seleccionar un paquete */}
+      <div className="w-full mx-auto mt-8 mx-2 p-6 bg-white rounded shadow">
+        <h2 className="text-2xl font-bold mb-4 text-center">Selecciona un paquete</h2>
+        <PackageList />
       </div>
       <MyFooter />
     </>
