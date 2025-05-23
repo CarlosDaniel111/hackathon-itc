@@ -26,6 +26,17 @@ const listSalons = async (req, res) => {
   }
 };
 
+const getAllSalons = async (req, res) => {
+  try {
+    const sql = 'SELECT id, name, description, location, capacity, price FROM Salon';
+    const rows = await pool.query(sql);
+    return res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error en getAllSalons:', error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
 const getSalonById = async (req, res) => {
   const salonId = req.params.salonId;
   try {
@@ -65,4 +76,4 @@ const getAvailability = async (req, res) => {
   }
 };
 
-module.exports = { listSalons, getSalonById, getAvailability };
+module.exports = { listSalons, getSalonById, getAvailability, getAllSalons };
