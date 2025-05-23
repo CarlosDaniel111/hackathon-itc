@@ -1,26 +1,28 @@
 import userLogo from '../assets/userLogo.png';
-export const ReviewCard = () => {
-  return (
+export const ReviewCard = ({ name, review, rating }) => {
+  const renderStars = () => {
+    const fullStars = '★'.repeat(rating);
+    const emptyStars = '☆'.repeat(5 - rating);
+    return fullStars + emptyStars;
+  };
 
-    <div className="max-w-sm p-4 m-4 bg-white rounded shadow">
+  return (
+    <div className="max-w-sm p-4 bg-white rounded shadow">
       <div className="flex items-center mb-4">
         <img
           src={userLogo}
-          alt="User Avatar"
+          alt={`Avatar de ${name}`}
           className="w-12 h-12 rounded-full mr-4"
         />
         <div>
-          <h3 className="text-lg font-semibold">Nombre del Usuario</h3>
-          <p className="text-gray-600">Fecha de la Reseña</p>
+          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+          <p className="text-sm text-gray-500">Hace poco</p> {/* Puedes cambiarlo por una fecha real si la agregas como prop */}
         </div>
       </div>
-      <p className="text-gray-700">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <div className="flex items-center mt-4">
-        <span className="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      <p className="text-gray-700">{review}</p>
+      <div className="flex items-center mt-3 text-yellow-500 text-lg">
+        <span>{renderStars()}</span>
       </div>
     </div>
-
   )
 }

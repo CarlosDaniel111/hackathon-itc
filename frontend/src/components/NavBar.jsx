@@ -6,8 +6,8 @@ export const NavBar = () => {
       <div className="text-xl font-bold">Eventhink</div>
 
       <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-        <a href="#" className="text-gray-700 hover:text-black transition">Inicio</a>
-        <a href="#" className="text-gray-700 hover:text-black transition">Servicios</a>
+        <Link to="/" className="text-gray-700 hover:text-black transition">Inicio</Link>
+        <Link to="/agendar" className="text-gray-700 hover:text-black transition">Agendar un evento</Link>
         <a href="#" className="text-gray-700 hover:text-black transition">Contacto</a>
       </div>
 

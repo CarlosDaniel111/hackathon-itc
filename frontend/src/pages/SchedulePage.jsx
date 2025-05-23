@@ -2,15 +2,37 @@ import { NavBar } from "../components/NavBar"
 import { MyFooter } from "../components/MyFooter"
 import { SalonList } from "../components/Schedule/SalonList";
 import { PackageList } from "../components/Schedule/PackageList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const SchedulePage = () => {
+
+  const [salonList, setSalonList] = useState([])
+  useEffect(() => {
+    axios.get("http://localhost:3000" + `/salons`).then((response) => {
+      setSalonList(response.data)
+    });
+  }, [])
+
   const [fechaHora, setFechaHora] = useState(new Date());
   const [packageSelected, setPackageSelected] = useState(null);
   const [salonSelected, setSalonSelected] = useState(null)
   const [duracion, setDuracion] = useState(1);
+
+  const calcularPrecio = () => {
+    const salon = salonList.find(salon => salon.id === salonSelected);
+    const packagePrice = packageSelected === 1 ? 7500 : packageSelected === 2 ? 10000 : packageSelected === 3 ? 15000 : packageSelected === 4 ? 5000 : packageSelected === 5 ? 12000 : 0;
+    return `$${(salon.price * duracion) + packagePrice} MXN`;
+  }
+  const getSalon = () => {
+    const salon = salonList.find(salon => salon.id === salonSelected);
+    return salon ? salon.name : "No seleccionado";
+  }
+  const getPackage = () => {
+    return packageSelected === 1 ? "Paquete Elegancia" : packageSelected === 2 ? "Paquete Fiesta" : packageSelected === 3 ? "Paquete Premium" : packageSelected === 4 ? "Paquete Básico" : packageSelected === 5 ? "Paquete Corporativo" : "No seleccionado";
+  }
   return (
     <>
       <NavBar />
@@ -20,7 +42,12 @@ export const SchedulePage = () => {
         <label className="block text-gray-700 mb-2">Fecha y hora del evento:</label>
         <DatePicker
           selected={fechaHora}
-          onChange={(date) => setFechaHora(date)}
+          onChange={(date) => {
+            if (date >= new Date()) {
+              setFechaHora(date)
+            }
+          }
+          }
           showTimeSelect
           timeIntervals={30}
           timeCaption="Hora"
@@ -49,6 +76,7 @@ export const SchedulePage = () => {
       <div className="w-full mx-auto mt-8 mx-2 p-6 bg-white rounded shadow">
         <h2 className="text-2xl font-bold mb-4 text-center">Selecciona un salón</h2>
         <SalonList
+          salonList={salonList}
           salonSelected={salonSelected}
           setSalonSelected={setSalonSelected}
         />
@@ -79,12 +107,15 @@ export const SchedulePage = () => {
               <p><span className="font-semibold">Fecha:</span> {fechaHora.toLocaleDateString()} </p>
               <p><span className="font-semibold">Hora:</span> {fechaHora.toLocaleTimeString()} </p>
               <p><span className="font-semibold">Duración:</span> {duracion} hora{duracion != 1 ? "s" : ""}</p>
-              <p><span className="font-semibold">Salón:</span> {salonSelected}</p>
-              <p><span className="font-semibold">Paquete:</span> {packageSelected} </p>
-              <p><span className="font-semibold">Precio total:</span> </p>
+              <p><span className="font-semibold">Salón:</span> {getSalon()}</p>
+              <p><span className="font-semibold">Paquete:</span> {getPackage()} </p>
+              <p><span className="font-semibold">Precio total:</span> {calcularPrecio()}</p>
             </div>
 
             <button
+              onClick={() => {
+                alert("Evento agendado con éxito");
+              }}
               className="mt-6 w-full bg-black text-white py-3 rounded hover:bg-gray-800 transition"
             >
               Continuar con el pago

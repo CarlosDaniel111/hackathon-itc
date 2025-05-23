@@ -1,21 +1,28 @@
 import { SalonCard } from "./SalonCard"
+import { useEffect, useState } from "react"
+import axios from "axios"
+export const SalonList = ({ salonList, salonSelected, setSalonSelected }) => {
 
-export const SalonList = ({ salonSelected, setSalonSelected }) => {
+
 
   return (
     <div className="flex flex-wrap justify-center">
       {
-        Array.from({ length: 10 }).map((_, i) => (
-          <SalonCard
-            key={i}
-            salonName={`Salon ${i + 1}`}
-            salonDescription={`Descripción del salón ${i + 1}`}
-            selected={salonSelected === i}
-            onClick={() => {
-              setSalonSelected(i)
-              console.log(`Salon ${i + 1} seleccionado`)
-            }}
-          />
+        salonList.map((salon) => (
+          <div className="" key={salon.id}>
+            <SalonCard
+              salonName={salon.name}
+              salonDescription={salon.description}
+              salonPrice={salon.price}
+              salonLocation={salon.location}
+              salonCapacity={salon.capacity}
+              selected={salonSelected === salon.id}
+              onClick={() => {
+                setSalonSelected(salon.id)
+                console.log(`Salon ${salon.name} seleccionado`)
+              }}
+            />
+          </div>
         ))
       }
 
