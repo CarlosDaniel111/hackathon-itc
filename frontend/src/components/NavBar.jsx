@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const NavBar = () => {
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-white shadow">
@@ -11,10 +13,14 @@ export const NavBar = () => {
 
       <div className="flex items-center space-x-4">
         <button className="px-4 py-2 text-sm text-black bg-gray-200 rounded hover:bg-gray-300 transition">
-          Iniciar sesión
+          <Link to="/login">
+            Iniciar sesión
+          </Link>
         </button>
         <button className="px-4 py-2 text-sm text-white bg-black rounded hover:bg-gray-800 transition">
-          Registrarse
+          <Link to="/signup">
+            Registrarse
+          </Link>
         </button>
       </div>
     </nav>

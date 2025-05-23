@@ -1,6 +1,4 @@
-
-import decoracionImg from "../../assets/decoracionSalon.jpg"
-export const PackageCard = ({ nombre, descripcion, precio, selected, onClick }) => {
+export const PackageCard = ({ nombre, descripcion, precio, image, selected, onClick }) => {
   return (
     <div
       onClick={onClick}
@@ -9,7 +7,7 @@ export const PackageCard = ({ nombre, descripcion, precio, selected, onClick }) 
     >
       <div className="w-1/3">
         <img
-          src={decoracionImg}
+          src={image}
           alt="Imagen del paquete"
           className="object-cover h-full w-full"
         />
