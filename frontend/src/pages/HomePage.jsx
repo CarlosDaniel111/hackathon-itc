@@ -29,10 +29,8 @@ export const HomePage = () => {
           <ReviewCard />
           <ReviewCard />
           <ReviewCard />
+          <ReviewCard />
         </div>
-        <button className="px-6 py-3 text-sm text-white bg-black rounded hover:bg-gray-800 transition">
-          Ver más reseñas
-        </button>
       </div>
       {/* Footer */}
       <MyFooter />

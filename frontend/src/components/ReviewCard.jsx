@@ -1,10 +1,11 @@
+import userLogo from '../assets/userLogo.png';
 export const ReviewCard = () => {
   return (
 
     <div className="max-w-sm p-4 m-4 bg-white rounded shadow">
       <div className="flex items-center mb-4">
         <img
-          src="https://via.placeholder.com/50"
+          src={userLogo}
           alt="User Avatar"
           className="w-12 h-12 rounded-full mr-4"
         />

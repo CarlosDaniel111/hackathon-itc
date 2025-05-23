@@ -5,6 +5,7 @@ import { SignupPage } from "../pages/SignupPage";
 import { SchedulePage } from "../pages/SchedulePage";
 import { MyEventsPage } from "../pages/MyEventsPage";
 import { StaffPage } from "../pages/StaffPage";
+import { AdminInventoryPage } from "../pages/AdminInventoryPage";
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
         <Route path="/agendar" element={<SchedulePage />} />
         <Route path="/my-events" element={<MyEventsPage />} />
         <Route path="/staff" element={<StaffPage />} />
+        <Route path="/admin/inventory" element={<AdminInventoryPage />} />
       </Routes>
     </BrowserRouter>
   );

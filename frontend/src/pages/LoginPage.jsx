@@ -44,9 +44,6 @@ export const LoginPage = () => {
         <div className="mt-4 text-center">
           <p className="text-sm">¿No tienes una cuenta? <Link to="/signup" className="hover:text-gray-700">Regístrate</Link></p>
         </div>
-        <div className="mt-4 text-center">
-          <p className="text-sm"><a href="#" className="hover:text-gray-700">¿Olvidaste tu contraseña?</a></p>
-        </div>
       </div>
     </div>
   );
